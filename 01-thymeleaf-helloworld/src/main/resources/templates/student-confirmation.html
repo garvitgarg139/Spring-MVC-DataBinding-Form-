@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Confirmation Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .confirmation-container {
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="confirmation-container">
+    <h3>Student Confirmation</h3>
+
+    <p>The Student is confirmed: <span th:text="${student.getFirstName()} + ' ' + ${student.getLastName()}"/></p>
+
+    <p>Country: <span th:text="${student.getCountry()}"/></p>
+
+    <p>Favorite Language: <span th:text="${student.getFavoriteLangauge()}"/></p>
+
+    <p>Favorite Operating Systems: <span th:text="${student.getFavoriteSystems()}"/></p>
+</div>
+
+</body>
+</html>

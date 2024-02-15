@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            border: 2px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 40%; /* Adjust the width as needed */
+            max-height: 70vh; /* Adjust the max-height as needed */
+            overflow-y: auto; /* Enable vertical scroll if needed */
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"], select {
+            width: calc(100% - 22px); /* Adjust the width */
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<form th:action="@{/processStudentForm}" th:object="${student}" method="post">
+
+    <div class="form-section">
+        <h3>Personal Information</h3>
+        First Name: <input type="text" th:field="*{firstName}"/><br><br>
+        Last Name: <input type="text" th:field="*{lastName}"/>
+    </div>
+
+    <div class="form-section">
+        <h3>Country</h3>
+        Country:
+        <select th:field="*{country}">
+            <option th:each="tempCountry : ${countries}" th:value="${tempCountry}" th:text="${tempCountry}" />
+        </select>
+    </div>
+
+    <div class="form-section">
+        <h3>Favorite Programming Language</h3>
+        <input type="radio" th:field="*{favoriteLangauge}" th:value="Go"/>Go
+        <input type="radio" th:field="*{favoriteLangauge}" th:value="Python"/>Python
+        <input type="radio" th:field="*{favoriteLangauge}" th:value="Ruby"/>Ruby
+        <input type="radio" th:field="*{favoriteLangauge}" th:value="Java"/>Java
+    </div>
+
+    <div class="form-section">
+        <h3>Favorite Operating Systems</h3>
+        <input type="checkbox" th:field="*{favoriteSystems}" th:value="Linux"/>Linux
+        <input type="checkbox" th:field="*{favoriteSystems}" th:value="macOS"/>macOS
+        <input type="checkbox" th:field="*{favoriteSystems}" th:value="'Microsoft Windows'"/>Microsoft Windows
+    </div>
+
+    <input type="submit" value="Submit"/>
+</form>
+
+</body>
+</html>
